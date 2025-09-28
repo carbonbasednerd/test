@@ -1,0 +1,45 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - ./shared:/app/shared
+    environment:
+      - PYTHONPATH=/app
+      - ENVIRONMENT=development
+    depends_on:
+      - redis
+    networks:
+      - puzzle-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+    networks:
+      - puzzle-network
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - puzzle-network
+
+networks:
+  puzzle-network:
+    driver: bridge
+
+volumes:
+  node_modules:
