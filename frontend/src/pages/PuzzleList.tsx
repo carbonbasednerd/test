@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Grid,
-  Card,
-  CardContent,
-  CardActions,
-  Typography,
-  Button,
-  Fab,
-  Box,
-  Chip,
+import { 
+  Grid, 
+  Card, 
+  CardContent, 
+  CardActions, 
+  Typography, 
+  Button, 
+  Fab, 
+  Box, 
+  Chip 
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
@@ -49,7 +49,7 @@ const PuzzleList: React.FC = () => {
   }
 
   return (
-    <Box>
+    <Box component="div">
       <Typography variant="h4" component="h1" gutterBottom>
         Your Puzzles
       </Typography>
@@ -95,7 +95,7 @@ const PuzzleList: React.FC = () => {
       </Grid>
 
       {puzzles.length === 0 && (
-        <Box textAlign="center" mt={4}>
+        <Box component="div" textAlign="center" mt={4}>
           <Typography variant="h6" color="text.secondary">
             No puzzles yet. Create your first puzzle!
           </Typography>

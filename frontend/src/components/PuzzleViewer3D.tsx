@@ -1,8 +1,8 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, Text, Box, Sphere } from '@react-three/drei';
-import { Vector3, Color } from 'three';
-import { Box as MuiBox, Paper, Typography, Slider, FormControlLabel, Switch } from '@mui/material';
+import { Color } from 'three';
+import { Paper, Typography, Slider, FormControlLabel, Switch } from '@mui/material';
 import { Puzzle, PuzzlePiece } from '../types/puzzle';
 
 interface PuzzlePiece3DProps {
@@ -175,13 +175,13 @@ const PuzzleViewer3D: React.FC<PuzzleViewer3DProps> = ({
   }
 
   return (
-    <MuiBox>
+    <div>
       <Paper sx={{ p: 2, mb: 2 }}>
         <Typography variant="h6" gutterBottom>
           3D Puzzle Viewer
         </Typography>
 
-        <MuiBox sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, alignItems: 'center' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'center' }}>
           <FormControlLabel
             control={
               <Switch
@@ -202,7 +202,7 @@ const PuzzleViewer3D: React.FC<PuzzleViewer3DProps> = ({
             label="Auto Rotate"
           />
 
-          <MuiBox sx={{ minWidth: 120 }}>
+          <div style={{ minWidth: '120px' }}>
             <Typography variant="body2" gutterBottom>
               Opacity: {Math.round(opacity * 100)}%
             </Typography>
@@ -214,9 +214,9 @@ const PuzzleViewer3D: React.FC<PuzzleViewer3DProps> = ({
               step={0.1}
               size="small"
             />
-          </MuiBox>
+          </div>
 
-          <MuiBox sx={{ minWidth: 120 }}>
+          <div style={{ minWidth: '120px' }}>
             <Typography variant="body2" gutterBottom>
               Explode View: {explodeView}
             </Typography>
@@ -228,8 +228,8 @@ const PuzzleViewer3D: React.FC<PuzzleViewer3DProps> = ({
               step={0.5}
               size="small"
             />
-          </MuiBox>
-        </MuiBox>
+          </div>
+        </div>
       </Paper>
 
       <Paper sx={{ height: '600px', overflow: 'hidden' }}>
@@ -297,7 +297,7 @@ const PuzzleViewer3D: React.FC<PuzzleViewer3DProps> = ({
           <strong>Yellow dots:</strong> Detected corners
         </Typography>
       </Paper>
-    </MuiBox>
+    </div>
   );
 };
 

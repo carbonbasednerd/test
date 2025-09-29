@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-  Box,
   Paper,
   Typography,
   TextField,
@@ -16,12 +15,6 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { puzzleApi } from '../services/api';
 import FileUpload from '../components/FileUpload';
 import CameraCapture from '../components/CameraCapture';
-
-const steps = [
-  'Create Puzzle',
-  'Upload Pieces',
-  'Complete Setup',
-];
 
 const CreatePuzzle: React.FC = () => {
   const navigate = useNavigate();
@@ -77,7 +70,7 @@ const CreatePuzzle: React.FC = () => {
   };
 
   return (
-    <Box>
+    <div>
       <Button
         startIcon={<ArrowBackIcon />}
         onClick={() => navigate('/')}
@@ -101,7 +94,7 @@ const CreatePuzzle: React.FC = () => {
           <Step>
             <StepLabel>Create Puzzle</StepLabel>
             <StepContent>
-              <Box sx={{ mb: 2 }}>
+              <div style={{ marginBottom: '16px' }}>
                 <TextField
                   fullWidth
                   label="Puzzle Name"
@@ -118,8 +111,8 @@ const CreatePuzzle: React.FC = () => {
                   multiline
                   rows={3}
                 />
-              </Box>
-              <Box sx={{ mb: 1 }}>
+              </div>
+              <div style={{ marginBottom: '8px' }}>
                 <Button
                   variant="contained"
                   onClick={handleCreatePuzzle}
@@ -128,7 +121,7 @@ const CreatePuzzle: React.FC = () => {
                 >
                   {loading ? 'Creating...' : 'Create Puzzle'}
                 </Button>
-              </Box>
+              </div>
             </StepContent>
           </Step>
 
@@ -139,7 +132,7 @@ const CreatePuzzle: React.FC = () => {
                 Upload images or videos of your puzzle pieces. You can use multiple methods:
               </Typography>
 
-              <Box sx={{ mt: 3, mb: 3 }}>
+              <div style={{ marginTop: '24px', marginBottom: '24px' }}>
                 <Typography variant="h6" gutterBottom>
                   Method 1: File Upload
                 </Typography>
@@ -150,9 +143,9 @@ const CreatePuzzle: React.FC = () => {
                     acceptVideo={true}
                   />
                 )}
-              </Box>
+              </div>
 
-              <Box sx={{ mt: 3, mb: 3 }}>
+              <div style={{ marginTop: '24px', marginBottom: '24px' }}>
                 <Typography variant="h6" gutterBottom>
                   Method 2: Camera Capture
                 </Typography>
@@ -163,9 +156,9 @@ const CreatePuzzle: React.FC = () => {
                   puzzleId={createdPuzzle?.id || ''}
                   onCaptureComplete={handleCameraCapture}
                 />
-              </Box>
+              </div>
 
-              <Box sx={{ mt: 2 }}>
+              <div style={{ marginTop: '16px' }}>
                 <Button
                   variant="outlined"
                   onClick={() => setActiveStep(2)}
@@ -173,7 +166,7 @@ const CreatePuzzle: React.FC = () => {
                 >
                   Skip for Now
                 </Button>
-              </Box>
+              </div>
             </StepContent>
           </Step>
 
@@ -184,14 +177,14 @@ const CreatePuzzle: React.FC = () => {
                 Your puzzle has been created successfully! You can now:
               </Typography>
 
-              <Box component="ul" sx={{ mt: 2, mb: 2 }}>
+              <ul style={{ marginTop: '16px', marginBottom: '16px' }}>
                 <li>Add more pieces by uploading additional images or videos</li>
                 <li>View the 3D visualization of your puzzle pieces</li>
                 <li>Start the AI solving process</li>
                 <li>Monitor the solving progress</li>
-              </Box>
+              </ul>
 
-              <Box sx={{ mt: 2 }}>
+              <div style={{ marginTop: '16px' }}>
                 <Button
                   variant="contained"
                   onClick={handleFinish}
@@ -205,12 +198,12 @@ const CreatePuzzle: React.FC = () => {
                 >
                   Back to List
                 </Button>
-              </Box>
+              </div>
             </StepContent>
           </Step>
         </Stepper>
       </Paper>
-    </Box>
+    </div>
   );
 };
 
